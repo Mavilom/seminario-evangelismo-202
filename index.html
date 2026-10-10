@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Inscrição | Seminário de Evangelismo</title>
+<style>
+:root{font-family:Arial,sans-serif;color:#1e293b;background:#f0f4f8}*{box-sizing:border-box}body{margin:0;padding:24px 12px}.card{max-width:560px;margin:auto;background:white;border-radius:18px;padding:28px;box-shadow:0 8px 30px #1232}h1{text-align:center;color:#123b66;margin-bottom:8px}p{text-align:center;color:#64748b}label{display:block;margin-top:16px;font-weight:600}input{display:block;width:100%;margin-top:7px;padding:13px;border:1px solid #cbd5e1;border-radius:9px;font-size:16px}button{margin-top:24px;width:100%;background:#16834b;color:white;border:0;padding:16px;border-radius:10px;font-size:17px;font-weight:bold;cursor:pointer}small{display:block;margin-top:15px;color:#64748b;text-align:center;line-height:1.5}
+</style></head><body><main class="card"><h1>Seminário de Evangelismo</h1><p>Formulário de inscrição</p><form id="form">
+<label>Nome completo<input name="nome" required autocomplete="name"></label>
+<label>CPF<input name="cpf" required inputmode="numeric" maxlength="14" placeholder="000.000.000-00"></label>
+<label>Telefone / WhatsApp<input name="telefone" required type="tel" autocomplete="tel"></label>
+<label>E-mail<input name="email" required type="email" autocomplete="email"></label>
+<label>Data de nascimento<input name="nascimento" required type="date"></label>
+<label>Endereço completo<input name="endereco" required autocomplete="street-address"></label>
+<button type="submit">Enviar inscrição pelo WhatsApp</button>
+<small>Ao continuar, o WhatsApp abrirá com os dados preenchidos. Confira e toque em Enviar para concluir. Seus dados não são armazenados neste site.</small>
+</form></main><script>
+document.querySelector('[name="cpf"]').addEventListener('input',e=>{let d=e.target.value.replace(/\D/g,'').slice(0,11);e.target.value=d.replace(/^(\d{3})(\d)/,'$1.$2').replace(/^(\d{3})\.(\d{3})(\d)/,'$1.$2.$3').replace(/\.(\d{3})(\d)/,'.$1-$2')});
+document.getElementById('form').addEventListener('submit',e=>{e.preventDefault();const f=new FormData(e.target);const labels={nome:'Nome',cpf:'CPF',telefone:'Telefone',email:'E-mail',nascimento:'Nascimento',endereco:'Endereço'};const msg='*INSCRIÇÃO - SEMINÁRIO DE EVANGELISMO*\n\n'+Object.entries(labels).map(([k,v])=>'*'+v+':* '+f.get(k)).join('\n');window.open('https://wa.me/5565992704452?text='+encodeURIComponent(msg),'_blank','noopener,noreferrer')});
+</script></body></html>

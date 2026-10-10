@@ -29,7 +29,8 @@
 </form></div>
 <div class="preview" id="preview"><h1>FORMULÁRIO DE INSCRIÇÃO</h1><h2>3º SEMINÁRIO DE EVANGELISMO</h2><p class="sub">IBAD – Igreja Evangélica Assembleia de Deus<br>SEVADECRE – Secretaria de Evangelismo de Cuiabá e Região</p><p><b>Data:</b> 29 a 31 de outubro de 2026 &nbsp; <b>Local:</b> Grande Templo</p><p><b>Endereço:</b> Av. Historiador Rubens de Mendonça, 3500 – Cuiabá – MT</p><div class="section">DADOS DO PARTICIPANTE</div><div id="previewFields"></div><div class="section">CONFIRMAÇÃO DE INSCRIÇÃO</div><p>☐ Confirmo minha inscrição e participação no 3º Seminário de Evangelismo.</p><div class="signature">Assinatura do participante: _________________________________________</div><p>Data da inscrição: ____/____/________</p><div class="bottom"><b>SEVADECRE</b><br>Secretaria de Evangelismo de Cuiabá e Região<p>“Ide por todo o mundo e pregai o evangelho a toda criatura.”<br><b>Marcos 16:15</b></p></div></div>
 </div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.2/jspdf.umd.min.js"></script>
+<script src="./jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.2/jspdf.umd.min.js" async></script>
 <script>
 "use strict";
 const form=document.getElementById("form"),status=document.getElementById("status"),cpf=document.getElementById("cpf");
@@ -44,7 +45,7 @@ function preview(){let v=values();document.getElementById("previewFields").inner
 form.addEventListener("input",preview);form.addEventListener("change",preview);preview();
 function makePdf(){
 if(!check())return null;
-if(!window.jspdf){status.textContent="Não foi possível carregar o gerador de PDF. Verifique a internet e tente novamente.";return null}
+if(!window.jspdf){status.textContent="Gerador de PDF indisponível. Use a opção de imprimir/salvar em PDF do navegador ou tente novamente.";return null}
 const v=values(),doc=new window.jspdf.jsPDF({orientation:"portrait",unit:"mm",format:"a4",compress:true});
 const ink=[19,39,102];const black=[18,18,18];let y=0;
 doc.setDrawColor(20,20,20);doc.setLineWidth(.45);doc.rect(4,4,202,289);
